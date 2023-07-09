@@ -1,5 +1,5 @@
 let hasValue: boolean = true;
-let count: number = 10;
+let count: number = 11;
 let float: number = 3.14;
 let negative: number = -0.12;
 let single: string = "hello";
@@ -102,3 +102,22 @@ function doubleAndHandle(num: number, cb: (num: number) => number): void {
 doubleAndHandle(21, (doubleNum) => {
   return doubleNum;
 });
+
+//unknown型
+let unknownInput: unknown;
+let anyInput: any;
+let text: string;
+unknownInput = "hello";
+unknownInput = 21;
+unknownInput = true;
+// text = unknownInput; //unknown型は代入できない
+//  stringのみ代入できる
+if (typeof unknownInput === "string") {
+  text = unknownInput;
+}
+
+//never型
+function error(message: string): never {
+  throw new Error(message);
+}
+console.log(error("This is an error"));
