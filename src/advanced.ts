@@ -99,6 +99,14 @@ function toUpperCase(x:string | number){
 }
 const upperHello = toUpperCase("hello")
 
+interface TmpFunc {
+  (x:string):number;
+  (x:string):number;
+}
+//overloadeの型を全て引数として取る必要がある
+const upperHello1: TmpFunc =function (x:string | number ){return 0}
+
+
 //optional chaining
 interface DownloadedData{
   id: number;
@@ -119,3 +127,14 @@ const userData = downloadedData.user ?? "no-user";
 
 //lookup型
 type id = DownloadedData["id"|"user"]
+
+//関数型のインターセクション
+interface FuncA{
+  (a:number, b:string): number;
+  (a:string, b:number): number;
+}
+interface FuncB{
+  (a:string): number;
+}
+let intersectionFunc: FuncA & FuncB;
+intersectionFunc = function(a:number |string, b?:number|string){return 0}
