@@ -103,7 +103,7 @@ interface TmpFunc {
   (x:string):number;
   (x:string):number;
 }
-//overloadeの型を全て引数として取る必要がある
+//overloadの型を全て引数として取る必要がある
 const upperHello1: TmpFunc =function (x:string | number ){return 0}
 
 
@@ -129,12 +129,43 @@ const userData = downloadedData.user ?? "no-user";
 type id = DownloadedData["id"|"user"]
 
 //関数型のインターセクション
+// interface FuncA{
+//   (a:number, b:string): number;
+//   (a:string, b:number): number;
+// }
+// interface FuncB{
+//   (a:string): number;
+// }
+// let intersectionFunc: FuncA & FuncB;
+// intersectionFunc = function(a:number |string, b?:number|string){return 0}
+
+//union型
 interface FuncA{
-  (a:number, b:string): number;
-  (a:string, b:number): number;
+  (a:number, b: string): number;
 }
 interface FuncB{
-  (a:string): number;
+  (a:string): string;
 }
-let intersectionFunc: FuncA & FuncB;
-intersectionFunc = function(a:number |string, b?:number|string){return 0}
+let unionFunc: FuncA | FuncB;
+
+//レストパラメータ、タプル
+function advancedFn(...args:  [number, string, boolean,...number[]]){
+}
+advancedFn(0,"hi",true,3,3,3)
+
+//タプルにread onlyをつける
+function advancedFn1(...args:  readonly number[]){
+}
+advancedFn1(0,1)
+
+//const assertion
+const milk ="milk" as const;
+let drink = milk;
+const array =[10,20] as const;
+const peter ={
+  name: "Peter",
+  age:38
+} as const 
+
+//型の中でtypeof
+type PeterType = typeof peter;
