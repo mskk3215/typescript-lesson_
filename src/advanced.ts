@@ -71,7 +71,8 @@ havePet(new Bird());
 //型アサーション
 const input = document.getElementById("input") as HTMLInputElement;
 input.value = "initial input value";
-<HTMLInputElement>document.getElementById("input")= "initial input value";
+(<HTMLInputElement>document.getElementById("input")).value =
+  "initial input value";
 
 //non-null assertion operator
 // const input1 = document.getElementById("input")!;
@@ -80,53 +81,54 @@ input.value = "initial input value";
 
 //index signiture
 interface Designer {
-  name:string;
-  [index: string]:string;
+  name: string;
+  [index: string]: string;
 }
-const designer:Designer ={
-  name:"Quill",
-  role:"web"
-}
+const designer: Designer = {
+  name: "Quill",
+  role: "web",
+};
 
 //function overload
-function toUpperCase(x:string):string;
-function toUpperCase(x:number):number;
-function toUpperCase(x:string | number){
-  if(typeof x === "string"){
-    return x.toUpperCase()
+function toUpperCase(x: string): string;
+function toUpperCase(x: number): number;
+function toUpperCase(x: string | number) {
+  if (typeof x === "string") {
+    return x.toUpperCase();
   }
   return x;
 }
-const upperHello = toUpperCase("hello")
+const upperHello = toUpperCase("hello");
 
 interface TmpFunc {
-  (x:string):number;
-  (x:string):number;
+  (x: string): number;
+  (x: string): number;
 }
 //overloadの型を全て引数として取る必要がある
-const upperHello1: TmpFunc =function (x:string | number ){return 0}
-
+const upperHello1: TmpFunc = function (x: string | number) {
+  return 0;
+};
 
 //optional chaining
-interface DownloadedData{
+interface DownloadedData {
   id: number;
-  user?:{
-    name?:{
-      first:string;
-      last:string;
-    }
-  }
+  user?: {
+    name?: {
+      first: string;
+      last: string;
+    };
+  };
 }
-const downloadedData: DownloadedData={
-  id:1
-}
-console.log(downloadedData.user?.name?.first)
+const downloadedData: DownloadedData = {
+  id: 1,
+};
+console.log(downloadedData.user?.name?.first);
 
 //Nullish coalescing
 const userData = downloadedData.user ?? "no-user";
 
 //lookup型
-type id = DownloadedData["id"|"user"]
+type id = DownloadedData["id" | "user"];
 
 //関数型のインターセクション
 // interface FuncA{
@@ -140,32 +142,30 @@ type id = DownloadedData["id"|"user"]
 // intersectionFunc = function(a:number |string, b?:number|string){return 0}
 
 //union型
-interface FuncA{
-  (a:number, b: string): number;
+interface FuncA {
+  (a: number, b: string): number;
 }
-interface FuncB{
-  (a:string): string;
+interface FuncB {
+  (a: string): string;
 }
 let unionFunc: FuncA | FuncB;
 
 //レストパラメータ、タプル
-function advancedFn(...args:  [number, string, boolean,...number[]]){
-}
-advancedFn(0,"hi",true,3,3,3)
+function advancedFn(...args: [number, string, boolean, ...number[]]) {}
+advancedFn(0, "hi", true, 3, 3, 3);
 
 //タプルにread onlyをつける
-function advancedFn1(...args:  readonly number[]){
-}
-advancedFn1(0,1)
+function advancedFn1(...args: readonly number[]) {}
+advancedFn1(0, 1);
 
 //const assertion
-const milk ="milk" as const;
+const milk = "milk" as const;
 let drink = milk;
-const array =[10,20] as const;
-const peter ={
+const array = [10, 20] as const;
+const peter = {
   name: "Peter",
-  age:38
-} as const 
+  age: 38,
+} as const;
 
 //型の中でtypeof
 type PeterType = typeof peter;
