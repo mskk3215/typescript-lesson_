@@ -1,0 +1,33 @@
+{
+  "name": "typescript-lesson",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^1.4.0",
+    "ts-loader": "^9.4.4",
+    "typescript": "^5.1.6"
+  },
+  "devDependencies": {
+    "clean-webpack-plugin": "^4.0.0",
+    "webpack": "^5.88.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config webpack.prod.js",
+    "start": "webpack serve --config webpack.dev.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mskk3215/typescript-lesson_.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mskk3215/typescript-lesson_/issues"
+  },
+  "homepage": "https://github.com/mskk3215/typescript-lesson_#readme"
+}
