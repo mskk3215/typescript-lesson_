@@ -1,8 +1,7 @@
 const path = require("path");
 module.exports = {
-  // entry: "./dist/main.js",
   mode: "development",
-  entry: "./src/food-app/main.ts",
+  entry: "./src/react.tsx",
   output: {
     // filename: "[contenthash]bundle.js", //cashされたbundle.jsがあると更新が反映されなかったりする
     filename: "bundle.js", //cashされたbundle.jsがあると更新が反映されなかったりする
@@ -13,14 +12,14 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.ts$/,
+        test: /\.tsx?$/,
         use: "ts-loader",
         exclude: /node_modules/, //tsファイルがnode_modulesから取ってきたら書けないよという意味
       },
     ],
   },
   resolve: {
-    extensions: [".ts", ".js"], //import文に拡張子がついていなければ、これをみて判断する
+    extensions: [".tsx", ".ts", ".js"], //import文に拡張子がついていなければ、これをみて判断する
   },
   devServer: {
     static: {
