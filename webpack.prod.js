@@ -3,7 +3,8 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 module.exports = {
   // entry: "./dist/main.js",
   mode: "production",
-  entry: "./src/food-app/main.ts",
+  entry: "./src/library.ts",
+  // entry: "./src/food-app/main.ts",
   output: {
     // filename: "[contenthash]bundle.js", //cashされたbundle.jsがあると更新が反映されなかったりする
     filename: "bundle.js", //cashされたbundle.jsがあると更新が反映されなかったりする
